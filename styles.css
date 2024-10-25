@@ -1,0 +1,187 @@
+/* Struktur dasar */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #ffdde1, #fad0c4);
+    overflow: hidden;
+}
+
+/* Efek animasi background yang bergerak */
+body:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 223, 225, 0.5), transparent 60%);
+    animation: moveBackground 15s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveBackground {
+    0% { transform: translate(-20%, -20%); }
+    50% { transform: translate(20%, 20%); }
+    100% { transform: translate(-20%, -20%); }
+}
+
+/* Kontainer utama */
+.container {
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1.5s ease-in-out;
+    max-width: 400px; /* batas lebar maksimal */
+    width: 90%; /* responsif */
+}
+
+/* Efek border bercahaya pada container */
+.container:before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #e63946, #ffb6b9, #ffdde1, #d62839);
+    background-size: 400%;
+    border-radius: inherit;
+    z-index: -1;
+    animation: glowingBorder 10s linear infinite;
+}
+
+@keyframes glowingBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Animasi teks bergelombang */
+h1 {
+    color: #6a0dad; /* Warna ungu untuk "Happy Anniversary" */
+    font-size: 2em;
+    margin: 0;
+    animation: wave 2s infinite ease-in-out;
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Animasi fade-in untuk paragraf */
+p {
+    font-size: 1em;
+    color: #6a0dad; /* Warna ungu */
+    margin: 15px 0;
+    animation: fadeIn 1.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Efek hover pada teks */
+h1:hover, p:hover {
+    color: #7a1e6d; /* Warna ungu lebih gelap saat hover */
+    transition: color 0.3s ease;
+}
+
+/* Bayangan dan hover untuk gambar */
+.birthday-image {
+    width: 100%; /* responsif */
+    max-width: 250px; /* batas lebar maksimal */
+    border-radius: 12px;
+    margin: 10px 0;
+    animation: zoomIn 1.5s ease forwards;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.birthday-image:hover {
+    transform: scale(1.05);
+}
+
+/* Gaya tombol dan efek hover */
+button {
+    padding: 10px 20px;
+    background-color: #6a0dad; /* Warna ungu */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    animation: fadeIn 2s ease forwards;
+}
+
+button:hover {
+    background-color: #7a1e6d; /* Warna ungu lebih gelap saat hover */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Efek bunga */
+.bunga {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: url('images/inggaa.png') no-repeat center center; /* Ganti dengan path yang benar */
+    background-size: contain;
+    opacity: 0.7;
+    animation: fall 5s infinite ease-in-out;
+}
+
+.bunga:nth-child(1) { left: 10%; animation-delay: 0s; }
+.bunga:nth-child(2) { left: 30%; animation-delay: 1s; }
+.bunga:nth-child(3) { left: 50%; animation-delay: 2s; }
+.bunga:nth-child(4) { left: 70%; animation-delay: 3s; }
+.bunga:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+/* Efek sparkle */
+.sparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    animation: sparkle 1.5s infinite ease-in-out;
+    opacity: 0.7;
+}
+
+.sparkle:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: 30%; left: 50%; animation-delay: 0.5s; }
+.sparkle:nth-child(3) { top: 40%; left: 80%; animation-delay: 1s; }
+.sparkle:nth-child(4) { top: 60%; left: 25%; animation-delay: 1.5s; }
+.sparkle:nth-child(5) { top: 80%; left: 70%; animation-delay: 2s; }
+
+@keyframes sparkle {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.5); opacity: 1; }
+}
+
+/* Animasi jatuh untuk bunga */
+@keyframes fall {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Efek lembaran */
+.page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+   
